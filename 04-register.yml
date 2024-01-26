@@ -1,0 +1,22 @@
+# When to use shell module; Whenever you want to execute or do something where the appropriate module is not availabe then only prefer using SHELL Module.
+
+- name: Demo on using register
+  hosts: all                   
+  tasks:
+  - name: Demo on using Shell Module 
+    ansible.builtin.shell: uptime 
+    register: OUT 
+
+  - name: Printing the Shell Output using OUT Variable
+    ansible.builtin.debug:  
+      msg: "{{OUT.stdout}}"  
+
+  - name: printing the exit code of the UPTIME command  
+    ansible.builtin.set_fact:
+      STATUS_CODE: "{{OUT.rc}}"
+
+  - name: Printing uptime exit code 
+    ansible.builtin.debug:  
+      msg: "{{OUT.rc}}"  
+
+# Shell Module by default don't show you the output; It just executes and if you want to see the out, you need to register the output 
