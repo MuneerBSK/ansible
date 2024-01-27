@@ -5,4 +5,4 @@
     - name: Copying the proxy file to the remote nodes
       ansible.builtin.copy:
         src: proxy.conf 
-        dest: /home/centos/proxy.conf 
+        dest: /home/centos/proxy.conf  
