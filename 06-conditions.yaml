@@ -22,3 +22,10 @@
       ansible.builtin.debug:
         msg: Variable Action Is Declared
       when: actions123 is defined 
+
+
+# Older versions of ansible uses undefined, latest version os ansible users not defined 
+#
+# defined , not defined, tue, false , succeded , failure all of them are predefined keyboards as per the documentation 
+
+# Ref : https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html
