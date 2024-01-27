@@ -1,0 +1,9 @@
+- name: Demo on conditions 
+  hosts: all  
+  vars:
+    action: false 
+  tasks: 
+    - name: Execute this task when Distribution is CentOS 
+      ansible.builtin.debug:
+        msg: Welcome to CentOS 
+      when: ansible_distribution == "CentOS" 
