@@ -5,5 +5,5 @@
     ansible.builtin.shell: ps -ef | grep nginx | grep -v grep
 
   - name: Starting nginx
-    ansible.buitin.debug:
+    ansible.builtin.debug:
       msg: starting nginx service
