@@ -12,3 +12,8 @@
       ansible.builtin.debug:
         msg: Welcome to Ubuntu 
       when: ansible_distribution == "Ubuntu" 
+
+    - name: Run an action
+      ansible.builtin.debug:
+        msg: Action is true
+      when: action
