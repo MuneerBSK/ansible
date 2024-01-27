@@ -1,0 +1,13 @@
+- name: Demo on loops 
+  hosts: all  
+  tasks: 
+    - name: Demo on using Loops 
+      ansible.builtin.debug:
+        msg: "Value is {{item}}"
+      loop:
+        - 10
+        - 20
+        - 30
+
+
+# Each item in the list is referred as `item` in ansible supplied list . item is just a key work to pick an item in the list
