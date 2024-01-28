@@ -9,18 +9,18 @@
     dest: /tmp 
     remote_src: yes
 
-- name: Performing frontend cleanup 
+- name: Performing frontend cleanup
   ansible.builtin.file:
     path: /usr/share/nginx/html
-    state: absent 
+    state: absent
 
 - name: Copying frontend code
   ansible.builtin.copy:
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
-    remote_src: yes                    # This ensure your source to copy is on the remote machine  
+    remote_src: yes
 
-- name: Copying Roboshop Proxy Config 
+- name: Copying Roboshop Proxy Config
   ansible.builtin.copy:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
@@ -28,5 +28,6 @@
 - name: Restarting nginx
   ansible.builtin.service:
     name: nginx
-    state: restarted      
-    enabled: yes     
+    state: restarted
+    enabled: yes
+
