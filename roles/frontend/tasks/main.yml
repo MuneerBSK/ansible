@@ -13,3 +13,9 @@
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent 
+
+- name: Copying frontend code
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html
+    remote_src: yes                    # This ensure your source to copy is on the remote machine  
