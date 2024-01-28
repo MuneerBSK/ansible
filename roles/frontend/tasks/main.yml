@@ -19,3 +19,9 @@
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
     remote_src: yes                    # This ensure your source to copy is on the remote machine  
+
+- name: Copying Roboshop Proxy Config 
+  ansible.builtin.template:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+  notify: Restart Nginx                # Whenever there is a change in the file, only during that time this handler will be called.
