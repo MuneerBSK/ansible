@@ -11,3 +11,14 @@
   ansible.builtin.include_role:
     name: common 
     tasks_from: create-user
+
+- name: Calling Download and Extract Role From Common
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: download
+
+# Call Configure Service Role
+- name: Calling Config Service Role From Common
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: config-svc
