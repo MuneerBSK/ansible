@@ -1,12 +1,12 @@
-- name: Configuring the nodejs repo
-  ansible.builtin.shell: yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y | sudo bash -
+- name: Configuring the Node.js repo
+  ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
 
-- name: Installing Nodejs
+- name: Installing Node.js
   ansible.builtin.package:
     name: nodejs
     state: present
 
-- name: Creating a Roboshop user account
+- name: Creating a Roboshop User Account
   ansible.builtin.user:
     name: roboshop
-    comment: Roboshop user account
+    comment: Roboshop User Account
