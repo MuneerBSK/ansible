@@ -1,4 +1,4 @@
-- name: Configuring the nodejs repop
+- name: Configuring the nodejs repo
   ansible.builtin.shell: yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y | sudo bash -
 
 - name: Installing Nodejs
