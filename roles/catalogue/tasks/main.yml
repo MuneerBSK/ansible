@@ -1,0 +1,12 @@
+- name: Configuring the nodejs repop
+  ansible.builtin.shell: yum install https://rpm.nodesource.com/pub_16.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y | sudo bash -
+
+- name: Installing Nodejs
+  ansible.builtin.package:
+    name: nodejs
+    state: present
+
+- name: Creating a Roboshop user account
+  ansible.builtin.user:
+    name: roboshop
+    comment: Roboshop user account
