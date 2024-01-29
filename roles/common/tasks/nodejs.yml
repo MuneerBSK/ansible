@@ -5,3 +5,9 @@
   ansible.builtin.package:
     name: nodejs 
     state: present 
+
+# Calling User Task from common role
+- name: Calling Create User Role From Common
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: create-user
