@@ -23,6 +23,9 @@
   ansible.builtin.set_fact:
       DEFAULT_PASSWORD: "{{ mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') | split(' ') | last }}"
 
+- name: Changing MySQL Password 
+  ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
+
 # - name: Check the default password 
 #   block: 
 #     - name: Get MySQL version with non-default credentials
@@ -32,8 +35,6 @@
 #         filter: version
 
  
-- name: Changing MySQL Password 
-  ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
 
 # - name: Removing the password validate plugin 
 #   ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -pRoboShop@1 
