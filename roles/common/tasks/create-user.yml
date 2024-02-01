@@ -4,6 +4,6 @@
     comment: Roboshop User Account
   register: APPUSERINFO  
 
-- name: Installing boto3 and botocore
-  ansible.builtin.pip:
+- name: Printing
+  ansible.builtin.debug:
     msg: "{{APPUSERINFO}}"
