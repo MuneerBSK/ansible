@@ -4,9 +4,12 @@
     dest: /etc/yum.repos.d/mysql.repo 
 
 - name: Installing MySQL 
-  ansible.builtin.package:
-    name: mysql-community-server
-    state: present  
+  ansible.builtin.yum:
+    name: 
+      - mysql-community-server
+      # - MySQL-python
+      - PyMySQL
+    state: installed  
 
 - name: Starting MySQL
   ansible.builtin.service:
@@ -22,7 +25,7 @@
         login_password: RoboShop@1
         filter: version
 
-rescue: 
+  rescue: 
     - name: Loading the file from the remote node
       ansible.builtin.slurp:
         src: /var/log/mysqld.log
@@ -34,6 +37,7 @@ rescue:
 
     - name: Changing MySQL Password 
       ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
+
  
 
 # - name: Removing the password validate plugin 
