@@ -4,6 +4,13 @@ pipeline {
         SSH_CREDENTIALS = credentials('SSH_CRED')
     }
     stages {
+
+        stage('Performing lint checks') {
+            steps {
+                sh "echo This step should run against non-main branches only"
+                sh "echo PERFORMING LINT CHECKS"
+            }
+        }
         stage("performing the ansible dry run") {
             steps{
                 sh "env"
