@@ -7,7 +7,7 @@ pipeline {
         stage("performing the ansible dry run") {
             steps{
                 sh "env"
-                sh "ansible-playbook robot-dryrun.yaml -e COMPONENT=mongodb -e ansible_user=${SSH_CREDENTIALS_USE} -e ansible_password=${SSH_CREDENTIAL} -e ENV=qa"
+                sh "ansible-playbook robot-dryrun.yaml -e COMPONENT=mongodb -e ansible_user=${SSH_CREDENTIALS_USER} -e ansible_password=${SSH_CREDENTIAL} -e ENV=qa"
             }
         }
     }
