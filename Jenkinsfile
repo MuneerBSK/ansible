@@ -1,5 +1,8 @@
 pipeline {
     agent { label 'ws' }
+    environment {
+        SSH_CREDENTIALS = credentials('SSH_CRED')
+    }
     stages {
         stage("performing the ansible dry run") {
             steps{
@@ -7,3 +10,4 @@ pipeline {
             }
         }
     }
+}
