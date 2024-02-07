@@ -7,11 +7,12 @@ pipeline {
 
         stage('Performing lint checks') {
             steps {
+                sh "env"
                 sh "echo This step should run against non-main branches only"
                 sh "echo PERFORMING LINT CHECKS"
             }
         }
-        
+
         stage("performing the ansible dry run") {
             steps{
                 sh "env"
