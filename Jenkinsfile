@@ -5,10 +5,21 @@ pipeline {
     }
     stages {
         stage("performing the ansible dry run") {
-            steps{
+            steps {
                 sh "env"
                 sh "ansible-playbook robot-dryrun.yaml -e COMPONENT=mongodb -e ansible_user=${SSH_CREDENTIALS_USR} -e ansible_password=${SSH_CREDENTIALS_PSW} -e ENV=qa"
             }
         }
-    }
+        
+        stage('Promotion To Prod Branch') {
+            when {
+                expression { env.BRANCH_NAME == 'main' }
+            }
+            steps {
+                sh "env"
+                sh "echo printing"
+                sh "echo main - PROMOTING To PRODUCTION"
+            }
+        }
+    }       
 }
