@@ -11,6 +11,7 @@ pipeline {
                 sh "echo PERFORMING LINT CHECKS"
             }
         }
+        
         stage("performing the ansible dry run") {
             steps{
                 sh "env"
