@@ -6,6 +6,7 @@ pipeline {
     stages {
 
         stage('testing the tags') {
+            when {expression { TAG_NAME == ".*"} }
             steps {
                 sh "env"
             }
