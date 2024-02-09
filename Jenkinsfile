@@ -17,6 +17,7 @@ pipeline {
         }
         
         stage("Performing the Ansible dry run") {
+            when { branch pattern: "PR-.*", comparator: "REGEXP"}
             steps {
                 sh "env"
                 sh "ansible-playbook robot-dryrun.yaml -e COMPONENT=mongodb -e ansible_user=${SSH_CREDENTIALS_USR} -e ansible_password=${SSH_CREDENTIALS_PSW} -e ENV=qa"
@@ -25,7 +26,7 @@ pipeline {
         
         stage('Promotion To Prod Branch') {
             when {
-                expression { env.BRANCH_NAME == 'main' }
+                expression { env.TAG_NAME == ".*" }
             }
             steps {
                 sh "env"
